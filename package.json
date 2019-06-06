@@ -1,6 +1,6 @@
 {
   "name": "timeset",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Useful wrapper around the NodeJS process.hrtime() function",
   "main": "timeset.js",
   "scripts": {},
