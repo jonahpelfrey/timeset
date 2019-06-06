@@ -1,0 +1,11 @@
+{
+  "name": "timeset",
+  "version": "1.0.0",
+  "description": "Useful wrapper around the NodeJS process.hrtime() function",
+  "main": "timeset.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonah Pelfrey",
+  "license": "ISC"
+}
