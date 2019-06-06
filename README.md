@@ -13,8 +13,16 @@ var timers = new TimeSet();
 timers.start("foo_time");
 foo();
 timers.end("foo_time");
+
+timers.start("bar_time");
+bar();
+timers.end("bar_time");
 ```
 ```node
 console.log(timers.log());
-/* Foo_time: (0s, 1.05ms, 1050000ns) */
+
+/* 
+  'Foo_time: (0s, 1.05ms, 1050000ns)'
+  'Bar_time: (0s, 2.10ms, 2100000ns)' 
+ */
 ````
