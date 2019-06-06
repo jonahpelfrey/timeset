@@ -1,5 +1,5 @@
 # TimeSet
-Useful wrapper around the NodeJS process.hrtime() function. TimeSet allows you to easily mark points in your code to capture execution times, and view them later in second, millisecond, and nanosecond representations.
+Useful wrapper around the NodeJS process.hrtime.bigint() function. TimeSet allows you to easily mark points in your code to capture execution times, and view them later in second, millisecond, and nanosecond representations.
 
 # Installation
 **npm install timeset --save**
@@ -7,22 +7,33 @@ Useful wrapper around the NodeJS process.hrtime() function. TimeSet allows you t
 # Usage
 ```node
 const TimeSet = require('timeset');
-var timers = new TimeSet();
-```
-```node
-timers.start("foo_time");
-foo();
-timers.end("foo_time");
 
-timers.start("bar_time");
-bar();
-timers.end("bar_time");
+var timeset = new TimeSet();
+timeset.add("file-timer");
 ```
 ```node
-console.log(timers.log());
+timeset.start("file-timer");
+
+timeset.mark("file-timer", "compression");
+compressFile();
+
+timeset.mark("file-timer", "upload");
+uploadFile();
+
+timeset.end("file-timer");
+```
+```node
+let results = timeset.log("file-timer");
+console.log(results);
 
 /* 
-  'Foo_time: (0s, 1.05ms, 1050000ns)'
-  'Bar_time: (0s, 2.10ms, 2100000ns)' 
+  ---------------
+  File-Timer:
+  
+  compression: (0.001s, 1.398ms, 1398457ns)
+  upload: (0.001s, 0.652ms, 651894ns)
+
+  Elapsed: (0.002s, 2.102ms, 2101682ns)
+  ---------------
  */
 ````
